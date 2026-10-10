@@ -99,15 +99,15 @@ Airtable rejects releases from a CLI below a minimum version they can raise with
 
 Pin anyway, for reproducibility. Just know what the failure looks like. The error message is also misleading: it tells you to run `npm i -g @airtable/blocks`, which is the SDK, not the CLI. The package you need is `@airtable/blocks-cli`.
 
-Notes on a few lines:
+### Notes on a few lines
 
-`concurrency` stops two merges racing to upload at once.
+- `concurrency` stops two merges racing to upload at once.
 
-`set -o pipefail` makes the job fail if `block release` itself errors, not just if the grep misses.
+- `set -o pipefail` makes the job fail if `block release` itself errors, not just if the grep misses.
 
-The grep matches plain text rather than the emoji the CLI actually prints, since an encoding difference on the runner should not fail a good release.
+- The grep matches plain text rather than the emoji the CLI actually prints, since an encoding difference on the runner should not fail a good release.
 
-The last step deletes the file `block set-api-key --location app` writes into the working directory, so the token cannot end up in an artifact or a cache.
+- The last step deletes the file `block set-api-key --location app` writes into the working directory, so the token cannot end up in an artifact or a cache.
 
 ### Merging is publishing
 
