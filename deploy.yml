@@ -19,7 +19,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm install -g @airtable/blocks-cli@3.0.2
+      - run: npm install -g @airtable/blocks-cli@3.0.3
       - run: block set-api-key --location app "$PAT"
         env:
           PAT: ${{ secrets.AIRTABLE_BLOCK_PAT }}
